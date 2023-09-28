@@ -6,8 +6,14 @@ import Functiondropdown from "@/components/Functiondropdown";
 import Departmentdropdown from "@/components/Departmentdropdown";
 import Uniqueroledropdown from "@/components/Uniqueroledropdown"
 import axios from "axios";
+import { IoIosArrowDown } from 'react-icons/io';
+
 
 export default function careerpath({ params }) {
+
+    const [username, setUsername] = useState("");
+    const [gender, setGender] = useState("");
+
 
     const [functions, setFunctions] = useState(params.id);
     const [fnoptions, setFnoptions] = useState([]);
@@ -18,6 +24,7 @@ export default function careerpath({ params }) {
     const [uniqueroles, setUniqueroles] = useState("");
     const [unqoptions, setUnqoptions] = useState([]);
 
+    const [possiblemovement, setPossiblemovement] = useState("");
 
     const fetchfnoptions = async () => {
         try {
@@ -62,6 +69,24 @@ export default function careerpath({ params }) {
 
     }
 
+    const fetchpossiblemovement = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/possiblemove/${functions}/${departments}/${uniqueroles}`);
+            setPossiblemovement(response.data);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    }
+
+    const handleGenderChange = (event) => {
+        setGender(event.target.value);
+    }
+
     const handleFunctionsChange = async (event) => {
         setFunctions(event.target.value);
         await fetchdeparments(event.target.value);
@@ -103,6 +128,47 @@ export default function careerpath({ params }) {
                 <table className="table-auto w-full">
                     <thead>
                         <tr>
+                            <th className="p-2 w-1/2">Name</th>
+                            <th className="p-2 w-1/2">Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className="p-2 w-1/2">
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter Name"
+                                    value={username}
+                                    onChange={handleUsernameChange}
+                                    className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                />
+                            </td>
+                            <td className="p-2 w-1/2">
+                                <div className="relative">
+                                    <select
+                                        id="gender"
+                                        name="gender"
+                                        value={gender}
+                                        onChange={handleGenderChange}
+                                        className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                    >
+                                        <option value="">Choose Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-700">
+                                        <IoIosArrowDown className="w-4 h-4" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table className="table-auto w-full">
+                    <thead>
+                        <tr>
                             <th className="p-2 w-1/3">Function</th>
                             <th className="p-2 w-1/3">Department</th>
                             <th className="p-2 w-1/3">Unique Roles</th>
@@ -132,18 +198,17 @@ export default function careerpath({ params }) {
                                 />
                             </td>
                         </tr>
-                        <tr>
-                            <td colSpan="3" className="p-2 w-full">
-                                <button
-                                    className="bg-green-200 hover:bg-green-300 text-green-800 py-2 px-4 rounded-full w-full"
-                                // onClick={handleButtonClick}
-                                >
-                                    Submit
-                                </button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
+                <br />
+                <div className="px-4">
+                    <button
+                        className="bg-green-200 hover:bg-green-300 text-green-800 py-2 px-4 rounded-full"
+                        onClick={fetchpossiblemovement}
+                    >
+                        Submit
+                    </button>
+                </div>
             </div>
 
         </main>
