@@ -6,6 +6,7 @@ import Functiondropdown from "@/components/Functiondropdown";
 import Departmentdropdown from "@/components/Departmentdropdown";
 import Uniqueroledropdown from "@/components/Uniqueroledropdown"
 import axios from "axios";
+import DisplayMovement from "@/components/Displaymovements";
 import { IoIosArrowDown } from 'react-icons/io';
 
 
@@ -111,7 +112,7 @@ export default function careerpath({ params }) {
     }, [params.id]);
 
     return (
-        <main className="flex min-h-screen">
+        <main className="flex flex-col min-h-screen">
             <div className="fixed top-0 left-0 p-4">
                 <Link href="/">
                     <Image
@@ -210,7 +211,9 @@ export default function careerpath({ params }) {
                     </button>
                 </div>
             </div>
-
+            <div className="w-full mt-4 py-10">
+                <DisplayMovement movements={possiblemovement} />
+            </div>
         </main>
     );
 }
