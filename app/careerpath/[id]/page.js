@@ -7,6 +7,7 @@ import Departmentdropdown from "@/components/Departmentdropdown";
 import Uniqueroledropdown from "@/components/Uniqueroledropdown"
 import axios from "axios";
 import DisplayMovement from "@/components/Displaymovements";
+import Displaymovement2 from "@/components/Departmentmovement2";
 import { IoIosArrowDown } from 'react-icons/io';
 
 
@@ -125,7 +126,7 @@ export default function careerpath({ params }) {
                 </Link>
             </div>
 
-            <div className="w-full mt-4 py-10">
+            <div className="w-full mt-4 pt-10 pb-5">
                 <table className="table-auto w-full">
                     <thead>
                         <tr>
@@ -211,8 +212,9 @@ export default function careerpath({ params }) {
                     </button>
                 </div>
             </div>
-            <div className="w-full mt-4 py-10">
+            <div className="w-full mt-4">
                 <DisplayMovement movements={possiblemovement} />
+                {/* <Displaymovement2 movements={possiblemovement} /> */}
             </div>
         </main>
     );
