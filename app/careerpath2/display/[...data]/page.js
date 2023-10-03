@@ -25,16 +25,14 @@ export default function Page({ params }) {
 
     return (
         <div>
-            <div className="absolute top-0 left-0 p-4">
+            <div className="absolute top-0 right-0 p-4">
                 <Link href="/careerpath2/1">
                     <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
                         Back
                     </button>
                 </Link>
             </div>
-            <div className="m-5">
-                <CareerTimeline movements={possiblemovement} />
-            </div>
+            <CareerTimeline movements={possiblemovement} />
         </div>
     );
 }
