@@ -49,10 +49,13 @@ body.rtl {
   padding-block: 0.5rem;
   padding-inline: 1rem;
   border-radius: 0.5rem;
-  background: linear-gradient(to right, #692fe2, #5360ea);
+
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #45b85c;
 }
 .organogram > div > span:hover {
-  background: linear-gradient(to right, Yellow, red);
+  background: linear-gradient(to right, #eee, #999);
 }
 .organogram > .main > span {
   aspect-ratio: 1;
@@ -86,7 +89,8 @@ body.rtl {
   --borderW: 2px;
   --borderR: 0.5rem;
   border-style: dashed;
-  border-color: #5360ea;
+
+  border-color: #ff0000;
 
   /* border-width */
   border-block-start-width: 0;

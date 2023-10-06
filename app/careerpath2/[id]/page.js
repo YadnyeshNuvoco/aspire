@@ -117,13 +117,13 @@ export default function careerpath2({ params }) {
 
     return (
         <main className="flex items-center justify-center min-h-screen">
-            <div className="fixed top-0 left-0 p-4">
+            <div className="fixed top-0 left-1 p-4 w-full sm:w-1/2 lg:w-1/3">
                 <Link href="/">
                     <Image
                         src="/logo3.png"
                         alt="Logo"
-                        width={100}
-                        height={32}
+                        width={170}
+                        height={54}
                         style={{ cursor: 'pointer' }}
                     />
                 </Link>
@@ -141,32 +141,9 @@ export default function careerpath2({ params }) {
                         placeholder="Enter Name"
                         value={username}
                         onChange={handleUsernameChange}
-                        className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                        className="block appearance-none w-full bg-white border border-green-300 hover:border-green-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     />
                 </div>
-
-                <div className="mb-4">
-                    <label htmlFor="gender" className="block text-gray-700 text-sm font-bold mb-2">
-                        Gender
-                    </label>
-                    <div className="relative">
-                        <select
-                            id="gender"
-                            name="gender"
-                            value={gender}
-                            onChange={handleGenderChange}
-                            className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                        >
-                            <option value="">Choose Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-700">
-                            <IoIosArrowDown className="w-4 h-4" />
-                        </div>
-                    </div>
-                </div>
-
                 <div className="mb-4">
                     <label htmlFor="function" className="block text-gray-700 text-sm font-bold mb-2">
                         Function
@@ -177,7 +154,6 @@ export default function careerpath2({ params }) {
                         handlefunctionschange={handleFunctionsChange}
                     />
                 </div>
-
                 <div className="mb-4">
                     <label htmlFor="department" className="block text-gray-700 text-sm font-bold mb-2">
                         Department
@@ -188,7 +164,6 @@ export default function careerpath2({ params }) {
                         handleDepartmentsChange={handleDepartmentsChange}
                     />
                 </div>
-
                 <div className="mb-4">
                     <label htmlFor="uniquerole" className="block text-gray-700 text-sm font-bold mb-2">
                         Unique Roles
@@ -199,18 +174,40 @@ export default function careerpath2({ params }) {
                         handleUniquerolesChange={handleUniquerolesChange}
                     />
                 </div>
+                <div className="mb-4">
+                    <label className="block text-gray-900  font-bold mb-2">Gender</label>
+                    <div className="flex items-center space-x-4">
+                        <label className={`relative cursor-pointer  px-4 py-2 rounded-lg border border-green-200 hover:bg-green-200 hover:text-green-800 ${gender === 'male' ? 'bg-green-200 text-green-800' : 'bg-gray-200 text-gray-700'}`}>
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="male"
+                                checked={gender === "male"}
+                                onChange={handleGenderChange}
+                                className="hidden"
+                            />
+                            Male
+                        </label>
+                        <label className={`relative cursor-pointer  px-4 py-2 rounded-lg border border-green-200 hover:bg-green-200 hover:text-green-800 ${gender === 'female' ? 'bg-green-200 text-green-800' : 'bg-gray-200 text-gray-700'}`}>
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="female"
+                                checked={gender === "female"}
+                                onChange={handleGenderChange}
+                                className="hidden"
+                            />
+                            Female
+                        </label>
+                    </div>
+                </div>
+
 
                 <div className="mb-4">
-                    {/* <button
-                        className="bg-green-200 hover:bg-green-300 text-green-800 py-2 px-4 rounded-full"
-                        onClick={() => router.push(`/careerpath2/display/${functions}/${departments}/${uniqueroles}`)}
-                    >
-                        Submit
-                    </button> */}
                     <input
                         type="submit"
                         value="Submit"
-                        className="bg-green-200 hover:bg-green-300 text-green-800 py-2 px-4 rounded-full"
+                        className="bg-green-200 hover:bg-green-300 text-green-800 py-2 px-4 mt-2 rounded-full"
                     />
                 </div>
             </form>
