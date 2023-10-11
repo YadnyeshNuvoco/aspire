@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import CareerTimeline from "@/components/CareerTimeline";
-import Image from "next/image";
+import Display3 from "@/components/Display3";
 
 export default function Page({ params }) {
     const [possiblemovement, setPossiblemovement] = useState({});
@@ -34,6 +34,7 @@ export default function Page({ params }) {
                 </Link>
             </div>
             <CareerTimeline movements={possiblemovement} />
+            {/* <Display3 movements={possiblemovement} /> */}
         </div>
     );
 }
